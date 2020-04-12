@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{>header}}
+    
+    <!-- END nav -->
+    <div class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text justify-content-center align-items-center">
+          <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center justify-content-center">
+          	<div class="text text-center content-center" id = "containerPresentation">
+	            <h1 class="mb-4">Encuentra ya <br>tu próxima propiedad</h1>
+	            <p style="font-size: 18px;">Introduce la zona deseada y disfruta de nuestro catálogo de viviendas</p>
+	            <form method="GET" action="search" class="search-location mt-md-5">
+		        		<div class="row justify-content-center search-form">
+		        			<div class="col-lg-12 align-items-end">
+		        				<div class="form-group">
+		          				<div class="form-field">
+		          				<div class="row">
+                      <a class="filter">Busqueda de:</a>
+                        <select name= "searchType" class="selectInput"> 
+                          <option value="Alquiler">Alquiler</option>
+                          <option value="Venta">Venta</option>
+                        </select>
+                        <a class="filter">Tipo de propiedad:</a>
+                        <select name= "propertyType" class="selectInput"> 
+                          <option value="Casa">Casa</option>
+                          <option value="Piso">Piso</option>
+                          <option value="Local">Local</option>
+                        </select>
+                        <label class="filter">Metros Cuadrados:</label>
+                        <input name= "squareMeters" value="25" class="numberInput" type="number" min="10" max="250">
+                      </div>
+                        <div class="row">
+                        <a class="filter"> Número de habitaciones:</a>
+                        <select name = "rooms" class="selectInput" > 
+                          <option value="1">1 o más</option>
+                          <option value="2">2 o más</option>
+                          <option value="3">3 o más</option>
+                        </select>
+                        <a class="filter"> Número de baños:</a>
+
+                        <select name="bathrooms" class="selectInput"> 
+                          <option value="1">1 o más</option>
+                          <option value="2">2 o más</option>
+                          <option value="3">3 o más</option>
+                        </select>
+                      
+                        <label class="filter" >Precio:</label>
+                        <input class="numberInput" value="1000"  name= "price" type="number" max="5000000">
+                        
+                      </div>
+				                <input type="text" name = "location" class="form-control search" placeholder="Introduce una zona">
+				                <button type="submit"><span class="ion-ios-search"></span></button>
+				              </div>
+			              </div>
+		        			</div>
+		        		</div>
+		        	</form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mouse">
+				<a href="#" class="mouse-icon">
+					<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
+				</a>
+			</div>
+    </div>
+
+    <section class="ftco-section goto-here">
+    	<div class="container">
+    		<div class="row justify-content-center">
+          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+          	<span class="subheading">Recomendaciones</span>
+            <h2 class="mb-2">Viviendas seleccionadas para ti</h2>
+          </div>
+        </div>
+        <div class="row">
+			{{#recommendedAds}}
+        	<div class="col-md-4">
+        		<div class="property-wrap ftco-animate">
+            <a href= "/properties/{{id}}" class="img" style="background-image: url(images/{{images.0}});"></a>
+        			<div class="text">
+        				<p class="price"><span class="old-price">{{price}}</span><span class="orig-price">{{price}}<small>/mo</small></span></p>
+        				<ul class="property_list">
+        					<li><span class="flaticon-bed"></span>{{rooms}}</li>
+        					<li><span class="flaticon-bathtub"></span>{{bathrooms}}</li>
+        					<li><span class="flaticon-floor-plan"></span>{{squareMeters}}</li>
+        				</ul>
+        				<h3><a href="#">{{property}} en {{location}}</a></h3>
+        				<span class="location">{{type}}</span>
+        				<a href="/addFavourite/{{id}}" class="d-flex align-items-center justify-content-center btn-custom">
+        					<span class="icon-star-o"></span>
+        				</a>
+        			</div>
+        		</div>
+			</div>
+			{{/recommendedAds}}
+    	</div>
+    </section>	 
+
+    <div class="container">
+      <!-- <canvas id="myChart" width="800" height="600"></canvas> -->
+
+      <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    </div>
+    
+    <div id="invisible1">
+      {{#graphValues}}
+      <p id= "{{key}}" ></p>
+      <p id="{{value}}"></p>
+      {{/graphValues}}
+    </div>
+
+{{>footer}}
+</html>
+
+<script type="text/javascript" src="js/graph.js"></script>

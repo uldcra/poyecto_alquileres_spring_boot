@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>property edit page</title>
+        <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="../css/propertyUpload.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <!-- <link rel="stylesheet" href="css/style.css"> -->
+    </head>
+    <style>
+        body {
+            background-size: cover;
+        }
+    </style>
+
+<body class="myBody">
+<div class="myContainer">
+
+    <div class="col-md-8 mb-md-5 d-flex align-middle justify-content-center" id="content">
+        <h2 class="text-center witt" id="submitAdvertisementButton">PUBLICAR BLOG <br></h2>
+        <br>
+        <form action="/blog-upload" method="post" enctype="multipart/form-data">
+
+            <h3 class="botonDesp2">Título:</h3><br><br><br>
+            <input required name="title" type="text" id="location">
+            <br>
+
+            <h3 class="botonDesp2">Descripción:</h3><br><br><br>
+            <div class="form-group shadow-textarea">
+                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Introduce una descripción..." name="description"></textarea>
+            </div>
+            
+            
+
+            <label for="file">Select image:</label>
+            <input required type="file" id="file" name="file" multiple>
+            <input type="submit">
+
+
+            <!-- <input type="submit" value="subir anuncio" class="btn btn-primary py-3 px-5"> -->
+            <input type="hidden" name="_csrf" value="{{token}}"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

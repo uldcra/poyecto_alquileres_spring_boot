@@ -1,0 +1,4 @@
+1.Ejecutar el script create_image.ps1
+2.Parar el servidor mysql local
+3.compilar la aplicacion completa:
+  COMANDO:docker-compose -f "docker-compose.yml" up -d --build

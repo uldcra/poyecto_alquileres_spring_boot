@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql/mysql-server:latest
+    container_name: c_mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=daw_webapp12
+      - MYSQL_ROOT_PASSWORD=13777091825
+      ## Use % to allow remote access to all addresses. 
+      ## Generally not recommended by some people to allow for root.
+      - MYSQL_ROOT_HOST=%
+    healthcheck:
+      test: ["CMD","mysqladmin","ping", "-h" , "localhost" ]
+      interval: 20s
+      timeout: 120s
+      retries: 100
+    networks:
+      network:
+  webapp12:
+    image: webapp12
+    container_name: c_webapp12
+    depends_on:
+      - mysql
+    ports:
+      - 8443:8443
+    restart: always   
+    networks:
+      network:
+networks:
+  network:
